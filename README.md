@@ -33,5 +33,5 @@ The Flight Management System (FMS) is a modern web application designed to strea
 * Developed by: **
 	- Buturo Eric
 
-Feel free to contribute or report issues. We appreciate your feedback!
+Feel free to contribute or report issues. I appreciate your feedback!
 
