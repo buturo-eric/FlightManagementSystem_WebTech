@@ -4,16 +4,6 @@
 
 The Flight Management System (FMS) is a modern web application designed to streamline flight and passenger management in the aviation industry. It aims to address the inefficiencies and challenges associated with traditional systems by providing a user-friendly interface, real-time updates, and secure data storage.
 
-## Table of Contents
-
-- [Features](#features)
-- [Technologies](#technologies)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Project Structure](#project-structure)
-- [Contributing](#contributing)
-- [License](#license)
-
 ## Features
 
 - **Flight Management:**
@@ -36,4 +26,12 @@ The Flight Management System (FMS) is a modern web application designed to strea
 - **Database:** MySQL Server
 - **Backend Language:** Java
 - **IDE:** IntelliJ IDEA Community Edition 2023
+
+** Configuration: **
+	+ Database configuration and other settings can be modified in application.properties files.
+
+* Developed by: **
+	- Buturo Eric
+
+Feel free to contribute or report issues. We appreciate your feedback!
 
