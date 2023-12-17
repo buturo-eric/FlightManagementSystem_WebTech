@@ -1,0 +1,287 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+
+body {
+  background: url("pexels-francesco-ungaro-6613572.jpg") no-repeat center/250vh 100vh fixed;
+  padding-top: 80px;
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin: 0;
+}
+
+form {
+  padding: 25px;
+  border-radius: 38px;
+  width: 100vw;
+  min-width: 72vh;
+  min-height: 70vh;
+  margin-top: 280px;
+  position: sticky;
+  /*top: -80px;*/
+  z-index: 1;
+/*
+position: relative;
+  z-index: 1;*/
+
+}
+
+form h2 {
+  font-size: 27px;
+  text-align: center;
+  margin: 0px 0 30px;
+}
+
+form .form-group {
+  margin-bottom: 15px;
+  position: relative;
+}
+
+form label {
+  display: block;
+  font-size: 15px;
+  margin-bottom: 7px;
+  color: white;
+}
+
+form input,
+form select {
+  height: 45px;
+  padding: 10px;
+  width: calc(100% - 20px);
+  font-size: 15px;
+  outline: none;
+  background: #fff;
+  border-radius: 3px;
+  border: 1px solid #bfbfbf;
+  color: black; /* Set text color for input fields */
+
+/*
+height: 45px;
+  padding: 10px;
+  width: calc(100% - 20px); */
+/* Adjusted the width to ensure padding doesn't affect it *//*
+  color: black;
+  z-index: 1;*/
+
+}
+
+form input:focus,
+form select:focus {
+  border-color: #9a9a9a;
+  /*z-index: 2;*/
+}
+
+form input.error,
+form select.error {
+  border-color: #f91919;
+  background: #f9f0f1;
+}
+
+form small {
+  font-size: 14px;
+  margin-top: 5px;
+  display: block;
+  color: #f91919;
+}
+
+form .password i {
+  position: absolute;
+  right: 0px;
+  height: 45px;
+  top: 28px;
+  font-size: 13px;
+  line-height: 45px;
+  width: 45px;
+  cursor: pointer;
+  color: #939393;
+  text-align: center;
+}
+
+.submit-btn {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.submit-btn input {
+  color: white;
+  border: none;
+  height: auto;
+  font-size: 16px;
+  padding: 13px 0;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  text-align: center;
+  background: #1BB295;
+  transition: 0.2s ease;
+  width: 30vh;
+  margin: 0 auto;
+}
+
+.submit-btn input:hover {
+  background: #179b81;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 2px;
+  background-color: black;
+  z-index: 100;
+  /*
+padding: 20px;
+  background-color: black;
+  z-index: 1000; */
+/* Ensure the navbar is above other elements */
+}
+
+header .navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: solid;
+  background-color: black;
+  border: none;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+header .navbar .logo {
+  color: #fff;
+  font-weight: 600;
+  font-size: 2.1rem;
+  text-decoration: none;
+}
+
+header .navbar .logo span {
+  color: #C06B3E;
+}
+
+header .navbar .menu-links {
+  display: flex;
+  list-style: none;
+  gap: 35px;
+}
+
+header .navbar a {
+  color: #fff;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+header .navbar a:hover {
+  color: #C06B3E;
+}
+
+.hero-section {
+  height: 100vh;
+  background-image: url("pexels-francesco-ungaro-6613572.jpg");
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  position: relative;
+}
+
+.hero-section .content {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  color: #fff;
+}
+
+.hero-section .content h2 {
+  font-size: 3rem;
+  max-width: 600px;
+  line-height: 70px;
+}
+
+.hero-section .content p {
+  font-weight: 300;
+  max-width: 600px;
+  margin-top: 15px;
+}
+
+#close-menu-btn {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+  display: none;
+}
+
+#hamburger-btn {
+  color: #fff;
+  cursor: pointer;
+  display: none;
+}
+
+@media (max-width: 768px) {
+  header {
+    padding: 10px;
+  }
+
+  header.show-mobile-menu::before {
+    content: "";
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px);
+  }
+
+  header .navbar .logo {
+    font-size: 1.7rem;
+  }
+
+  #hamburger-btn, #close-menu-btn {
+    display: block;
+  }
+
+  header .navbar .menu-links {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100vh;
+    background: #fff;
+    flex-direction: column;
+    padding: 70px 40px 0;
+    transition: left 0.2s ease;
+  }
+
+  header.show-mobile-menu .header .navbar .menu-links {
+    left: 0;
+  }
+
+  header .navbar a {
+    color: #000;
+  }
+
+  .hero-section .content {
+    text-align: center;
+  }
+
+  .hero-section .content :is(h2, p) {
+    max-width: 100%;
+  }
+
+  .hero-section .content h2 {
+    font-size: 2.3rem;
+    line-height: 60px;
+  }
+}
