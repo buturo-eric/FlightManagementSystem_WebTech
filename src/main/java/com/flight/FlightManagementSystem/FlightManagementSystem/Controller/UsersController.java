@@ -7,6 +7,8 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import jakarta.servlet.http.HttpSession;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -24,6 +26,7 @@ public class UsersController {
     @GetMapping("/login")
     public String userLogin(Model model){
         model.addAttribute("userModel",new UsersModel());
+
         return "login";
     }
 
@@ -50,15 +53,17 @@ public class UsersController {
     }
 
     @PostMapping("loginUser")
-    public String loginUser(@ModelAttribute("UsersModel") UsersModel usersModel, Model model){
+    public String loginUser(@ModelAttribute("UsersModel") UsersModel usersModel, Model model, HttpSession session){
         UsersModel loginUser = usersService.userLogin(usersModel);
 
         if(loginUser != null){
             if ("admin".equals(loginUser.getRole())) {
                 model.addAttribute("success", "Admin Logged in");
+                session.setAttribute("userModel2",loginUser.getId());
                 return "redirect:/adminHome";
             } else if ("user".equals(loginUser.getRole())) {
                 model.addAttribute("success", "User Logged in");
+                session.setAttribute("userModel2",loginUser.getId());
                 return "redirect:/userHome";
             } else {
                 model.addAttribute("error", "Role doesn't Exist");
@@ -68,6 +73,13 @@ public class UsersController {
             model.addAttribute("error", "Invalid email or password");
             return "redirect:/login";
         }
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session, RedirectAttributes redirectAttributes){
+        session.invalidate();
+        redirectAttributes.addFlashAttribute("logged_out", "Logged out successfully");
+        return "redirect:/home";
     }
 
 }

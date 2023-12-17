@@ -4,6 +4,7 @@ import com.flight.FlightManagementSystem.FlightManagementSystem.Model.AirlineMod
 import com.flight.FlightManagementSystem.FlightManagementSystem.Model.UsersModel;
 import com.flight.FlightManagementSystem.FlightManagementSystem.Service.AirlineService;
 import com.flight.FlightManagementSystem.FlightManagementSystem.Service.FlightsService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.MediaType;
@@ -18,18 +19,30 @@ public class AirlineController {
     @Autowired
     AirlineService airlineService;
     @GetMapping("/airline")
-    public String airline(Model model) {
-        model.addAttribute("airlineModel", new AirlineModel());
-        model.addAttribute("airlines", airlineService.getAll());
-        return "airline";
+    public String airline(Model model, HttpSession session) {
+        Integer id2 = (Integer) session.getAttribute("userModel2");
+        if(id2!= null){
+            model.addAttribute("airlineModel", new AirlineModel());
+            model.addAttribute("airlines", airlineService.getAll());
+            return "airline";
+        }else {
+            return "redirect:/login";
+        }
+
     }
 
     @GetMapping("/editAirline/{id}")
-    public String editAirline(@PathVariable Integer id, Model model) {
-        AirlineModel airline = airlineService.listById(id);
-        model.addAttribute("airlineModel", airline);
-        model.addAttribute("airlines", airlineService.getAll());
-        return "airline";
+    public String editAirline(@PathVariable Integer id, Model model, HttpSession session) {
+        Integer id2 = (Integer) session.getAttribute("userModel2");
+        if(id2!= null){
+            AirlineModel airline = airlineService.listById(id);
+            model.addAttribute("airlineModel", airline);
+            model.addAttribute("airlines", airlineService.getAll());
+            return "airline";
+        }else {
+            return "redirect:/login";
+        }
+
     }
 
     @GetMapping("/deleteAirline/{id}")
@@ -49,10 +62,15 @@ public class AirlineController {
     }
     }
     @PostMapping("createAirline")
-    public String createAirline(@ModelAttribute("airlineModel") AirlineModel airlineModel, Model model) {
-        airlineService.addNewAirlineModel(airlineModel);
-        model.addAttribute("airlines", airlineService.getAll());
-        return "redirect:/airline";
+    public String createAirline(@ModelAttribute("airlineModel") AirlineModel airlineModel, Model model, HttpSession session) {
+        Integer id2 = (Integer) session.getAttribute("userModel2");
+        if(id2!= null) {
+            airlineService.addNewAirlineModel(airlineModel);
+            model.addAttribute("airlines", airlineService.getAll());
+            return "redirect:/airline";
+        }else {
+            return "redirect:/login";
+        }
     }
 
     @PostMapping("/updateAirline/{id}")
