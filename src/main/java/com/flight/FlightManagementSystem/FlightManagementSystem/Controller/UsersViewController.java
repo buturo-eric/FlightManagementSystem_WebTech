@@ -73,19 +73,19 @@ public class UsersViewController {
         return "userView";
     }
 
-    @PostMapping("/updatePassenger")
-    public String updatePassenger(@ModelAttribute("usersViewModel") UsersViewModel usersViewModel,
+    @PostMapping("/updatePassenger/{id}")
+    public String updatePassenger(@PathVariable String id, @ModelAttribute("usersViewModel") UsersViewModel usersViewModel,
                                   Model model){
-        userViewsService.addUsersViewModel(usersViewModel);
+        userViewsService.updateUsersViewModel(usersViewModel, Integer.parseInt(id));
         model.addAttribute("usersViewModel", userViewsService.getAll());
         return "userView";
     }
 
-    @PostMapping("/updatePassenger/{id}")
+    /*@PostMapping("/updatePassenger/{id}")
     public String updatePassenger(@PathVariable Integer id, @ModelAttribute("usersViewModel") UsersViewModel usersViewModel, Model model) {
         userViewsService.updateUsersViewModel(usersViewModel, id);
         model.addAttribute("passengers", userViewsService.getAll());
         return "redirect:/userView";
-    }
+    }*/
 
 }

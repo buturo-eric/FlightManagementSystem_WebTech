@@ -11,18 +11,16 @@ public class BookingModel {
     public String firstName;
     public String lastName;
     public int number;
-    public int total;
     public String paymentMethod;
 
     public BookingModel() {
     }
 
-    public BookingModel(int id, String firstName, String lastName, int number, int total, String paymentMethod) {
+    public BookingModel(int id, String firstName, String lastName, int number, String paymentMethod) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.number = number;
-        this.total = total;
         this.paymentMethod = paymentMethod;
     }
 
@@ -56,14 +54,6 @@ public class BookingModel {
 
     public void setNumber(int number) {
         this.number = number;
-    }
-
-    public int getTotal() {
-        return total;
-    }
-
-    public void setTotal(int total) {
-        this.total = total;
     }
 
     public String getPaymentMethod() {

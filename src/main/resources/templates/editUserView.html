@@ -33,14 +33,14 @@
   </nav>
 </header>
 
-<form th:action="@{/updatePassenger}" th:object="${usersViewModel}" method="post" class="container">
+<form th:action="@{/updatePassenger/{id} (id=${usersViewModel.id})}" th:object="${usersViewModel}" method="post" class="container">
   <h2>Edit Passenger</h2>
   <div class="row">
     <div class="col-md-6">
       <!-- Left column -->
       <div class="form-group flight">
         <label for="flight">Flight ID</label>
-        <input type="text" id="flight" class="form-control" name="flightId" th:value="${usersViewModel.flightId.flightId}">
+        <input type="text" id="flight" th:field="*{flightId}" class="form-control" name="flightId" th:value="${usersViewModel.flightId.flightId}">
 <!--        <select id="flight" name="flightId">-->
 <!--          <option th:each="flight : ${flights}" th:value="${flight.flightId}" th:text="${flight.flightId}"></option>-->
 <!--        </select>-->
@@ -56,7 +56,7 @@
       <div class="form-group airline">
         <label for="airline">Airline</label>
         <select id="airline" name="airline">
-          <option th:each="airline : ${airlines}" th:value="${airline.id}" th:text="${airline.name}"></option>
+          <option th:each="airline : ${airlines}" th:field="*{airline}" th:value="${airline.id}" th:text="${airline.name}"></option>
         </select>
       </div>
       <div class="form-group origin">

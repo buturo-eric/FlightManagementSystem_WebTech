@@ -27,7 +27,6 @@ public class BookingService {
             present.setFirstName(bookingModel.getFirstName());
             present.setLastName(bookingModel.getLastName());
             present.setNumber(bookingModel.getNumber());
-            present.setTotal(bookingModel.getTotal());
             present.setPaymentMethod(bookingModel.getPaymentMethod());
             return bookingRepo.save(present);
         }else {
